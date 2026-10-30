@@ -94,11 +94,39 @@ h1 .red{color:#f3d9a0;display:block}
 .program-grid div{display:flex;align-items:center;gap:10px;padding:13px;border-radius:13px;background:rgba(255,255,255,.035);font:14px/1.35 Arial,sans-serif;color:#e9e2d4}
 .program-grid b{color:#f2ca67;font-size:18px;min-width:20px;text-align:center}
 @media(max-width:600px){.program{margin-left:18px;margin-right:18px}.program-grid{grid-template-columns:1fr}.open-btn{width:100%}}
+
+/* Праздничная сцена */
+.lights{position:absolute;top:8px;left:5%;right:5%;height:42px;z-index:4;display:flex;justify-content:space-around;pointer-events:none}
+.lights:before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:rgba(70,52,34,.8);transform:rotate(2deg)}
+.bulb{width:10px;height:10px;border-radius:50%;position:relative;z-index:2;background:#e9c66c;box-shadow:0 0 8px 3px rgba(239,198,91,.65);animation:bulb 1.8s ease-in-out infinite}
+.bulb:nth-child(2n){background:#c83a2c;box-shadow:0 0 9px 3px rgba(200,58,44,.65);animation-delay:.4s}
+.bulb:nth-child(3n){background:#f5ead0;box-shadow:0 0 9px 3px rgba(245,234,208,.6);animation-delay:.8s}
+@keyframes bulb{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:1;transform:scale(1.18)}}
+.magic-sky{position:absolute;inset:0;pointer-events:none;z-index:1}
+.firework{position:absolute;width:4px;height:4px;border-radius:50%;background:#f6df9d;box-shadow:0 0 18px 5px rgba(246,223,157,.55);animation:firework 4s ease-out infinite}
+.firework:before,.firework:after{content:"";position:absolute;inset:-20px;background:conic-gradient(from 0deg,transparent 0 8%,rgba(246,223,157,.8) 9% 10%,transparent 11% 20%,rgba(246,223,157,.65) 21% 22%,transparent 23% 100%);border-radius:50%;animation:spin 4s linear infinite}
+.firework.one{top:16%;left:12%}.firework.two{top:24%;right:10%;animation-delay:1.7s}.firework.two:before,.firework.two:after{animation-delay:1.7s}
+@keyframes firework{0%,65%,100%{opacity:0;transform:scale(.2)}12%,42%{opacity:1;transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-tree{position:relative;width:190px;height:225px;margin:5px auto 0;filter:drop-shadow(0 18px 20px rgba(0,0,0,.5));animation:treeIn 1.4s ease-out both}
+.hero-tree .top,.hero-tree .mid,.hero-tree .bot{position:absolute;left:50%;transform:translateX(-50%);width:0;height:0;border-left:78px solid transparent;border-right:78px solid transparent;border-bottom:105px solid #174b37}
+.hero-tree .top{top:0}.hero-tree .mid{top:54px;border-left-width:95px;border-right-width:95px;border-bottom-width:120px;border-bottom-color:#155039}.hero-tree .bot{top:115px;border-left-width:112px;border-right-width:112px;border-bottom-width:135px;border-bottom-color:#123f31}
+.hero-tree .trunk{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:58px;background:linear-gradient(90deg,#432515,#754529,#3d2113);border-radius:3px}
+.star-top{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:36px;color:#f7d36d;text-shadow:0 0 18px #f7d36d;animation:starGlow 1.8s ease-in-out infinite}
+.orn{position:absolute;width:13px;height:13px;border-radius:50%;background:#d8ad51;box-shadow:0 0 7px rgba(216,173,81,.8)}
+.orn.r{background:#a92d25;box-shadow:0 0 7px rgba(169,45,37,.7)}
+.orn.o1{left:45px;top:70px}.orn.o2{right:46px;top:86px}.orn.o3{left:25px;top:132px}.orn.o4{right:27px;top:150px}.orn.o5{left:76px;top:174px}.orn.o6{right:72px;top:195px}
+@keyframes starGlow{0%,100%{opacity:.65;transform:translateX(-50%) scale(.9)}50%{opacity:1;transform:translateX(-50%) scale(1.12)}}
+@keyframes treeIn{from{opacity:0;transform:translateY(35px) scale(.88)}to{opacity:1;transform:translateY(0) scale(1)}}
+.card.open .hero-tree{animation:treeIn 1.1s ease-out both}
+@media(max-width:600px){.lights{left:2%;right:2%}.hero-tree{transform:scale(.82);margin:-8px auto -18px}.firework{display:none}}
 </style>
 </head>
 <body>
 <div class="scene">
+  <div class="magic-sky"><span class="firework one"></span><span class="firework two"></span></div>
   <main class="card">
+    <div class="lights"><i class="bulb" style="animation-delay:0s"></i><i class="bulb" style="animation-delay:0.18s"></i><i class="bulb" style="animation-delay:0.36s"></i><i class="bulb" style="animation-delay:0.54s"></i><i class="bulb" style="animation-delay:0.72s"></i><i class="bulb" style="animation-delay:0.8999999999999999s"></i><i class="bulb" style="animation-delay:0s"></i><i class="bulb" style="animation-delay:0.18s"></i><i class="bulb" style="animation-delay:0.36s"></i><i class="bulb" style="animation-delay:0.54s"></i><i class="bulb" style="animation-delay:0.72s"></i><i class="bulb" style="animation-delay:0.8999999999999999s"></i><i class="bulb" style="animation-delay:0s"></i><i class="bulb" style="animation-delay:0.18s"></i><i class="bulb" style="animation-delay:0.36s"></i><i class="bulb" style="animation-delay:0.54s"></i><i class="bulb" style="animation-delay:0.72s"></i><i class="bulb" style="animation-delay:0.8999999999999999s"></i></div>
     <div class="pine"></div>
     <header class="header">
       <div class="kicker">Дом культуры «Гротеск» приглашает</div>
@@ -135,10 +163,13 @@ h1 .red{color:#f3d9a0;display:block}
     </div>
     <div class="wood"><span>❄ &nbsp; ПРАЗДНИК НАЧНЁТСЯ С НАШЕЙ ВСТРЕЧИ &nbsp; ❄</span></div>
     <div class="snow"></div>
-    <div class="tree" aria-hidden="true">🎄</div>
+    <div class="hero-tree" aria-hidden="true">
+      <span class="star-top">★</span><i class="top"></i><i class="mid"></i><i class="bot"></i><i class="trunk"></i>
+      <i class="orn o1"></i><i class="orn r o2"></i><i class="orn o3"></i><i class="orn r o4"></i><i class="orn o5"></i><i class="orn r o6"></i>
+    </div>
 
     <div class="footer">Русский Новый год • Верхнеказымский • 2026<br>До встречи на празднике!</div>
-  <div class="music-note" id="musicNote">♫ Музыку добавим следующим этапом</div>
+  <div class="music-note" id="musicNote">♫ «Новогодние игрушки» — добавим следующим этапом</div>
   </main>
 </div>
 <script>
