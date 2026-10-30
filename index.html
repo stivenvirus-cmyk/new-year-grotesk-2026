@@ -195,5 +195,42 @@ openBtn.addEventListener('click',()=>{
   if(opened) document.getElementById('inviteContent').scrollIntoView({behavior:'smooth',block:'center'});
 });
 </script>
+
+<audio id="bgMusic" preload="auto" autoplay playsinline loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<div class="audio-gate" id="audioGate">
+  <div class="audio-gate-icon">♫</div>
+  <div>Включаем новогоднюю музыку…</div>
+  <small>Если звук не запустился автоматически — коснитесь экрана</small>
+</div>
+<style>
+#audioGate{position:fixed;inset:auto 50% 22px;transform:translateX(-50%) translateY(20px);z-index:30;
+  min-width:280px;max-width:calc(100% - 32px);padding:14px 18px;text-align:center;border:1px solid rgba(246,223,157,.38);
+  border-radius:16px;background:rgba(8,28,32,.94);backdrop-filter:blur(12px);color:#f7ead0;
+  font:13px/1.35 Arial,sans-serif;box-shadow:0 12px 35px rgba(0,0,0,.38);opacity:0;pointer-events:none;transition:.45s ease}
+#audioGate.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+#audioGate small{display:block;margin-top:5px;color:#aab5b2;font-size:10px}
+.audio-gate-icon{font-size:22px;color:#f2ca67;margin-bottom:3px}
+</style>
+<script>
+(function(){
+  const audio=document.getElementById('bgMusic');
+  const gate=document.getElementById('audioGate');
+  let started=false;
+  function hide(){started=true;gate.classList.remove('show');}
+  function start(){
+    if(started)return;
+    const p=audio.play();
+    if(p&&p.then){p.then(hide).catch(()=>gate.classList.add('show'))}
+  }
+  window.addEventListener('load',()=>setTimeout(start,250));
+  ['pointerdown','touchstart','keydown','click'].forEach(ev=>{
+    window.addEventListener(ev,()=>{if(!started)start()},{passive:true});
+  });
+  audio.addEventListener('playing',hide);
+  audio.addEventListener('error',()=>gate.classList.add('show'));
+})();
+</script>
 </body>
 </html>
